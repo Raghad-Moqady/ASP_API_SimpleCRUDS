@@ -163,3 +163,4 @@ C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\obj\Debug\net9.0\refint
 C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\obj\Debug\net9.0\App1.pdb
 C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\obj\Debug\net9.0\App1.genruntimeconfig.cache
 C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\obj\Debug\net9.0\ref\App1.dll
+C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\obj\Debug\net9.0\App1.sourcelink.json
