@@ -1,6 +1,7 @@
 ﻿using App1.Data;
 using App1.DTOs.categories;
 using App1.Models;
+using Azure.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,13 +16,20 @@ namespace App1.Controllers
         [HttpPost("")]
         public IActionResult Create (CreateDTO request)
         {
-            var category = new Category()
+            try
             {
-                Name= request.Name
-            };
-            _context.Categories.Add(category);
-            _context.SaveChanges();
-            return Ok(new {message= "Added Succeessfully!" });
+                var category = new Category()
+                {
+                    Name = request.Name
+                };
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+                return Ok(new { message = "Added Succeessfully!" });
+            }
+            catch (Exception ex) { 
+                return BadRequest(ex.InnerException.Message);
+            }
+          
         }
 
         //read all
@@ -41,42 +49,71 @@ namespace App1.Controllers
             //return Ok(new {categories= categoriesDto});
 
             //way2:
-            var categoriesDto = _context.Categories.Select(c=>new GetAllDTO
+            try
             {
-                Id=c.Id,
-                Name= c.Name,
-            }).ToList(); 
-            return Ok(new { categories= categoriesDto });
+                var categoriesDto = _context.Categories.Select(c => new GetAllDTO
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                }).ToList();
+                return Ok(new { categories = categoriesDto });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+           
         }
         //read by id
         [HttpGet("{id}")]  
         public IActionResult GetById(int id) {
-            var category = _context.Categories.Find(id);
-            var categoryDto = new GetByIdDTO
+          
+            try
             {
-                Name=category.Name,
-            };
-            return Ok(new {category= categoryDto});
-            ;
+                var category = _context.Categories.Find(id);
+                var categoryDto = new GetByIdDTO
+                {
+                    Name = category.Name,
+                };
+                return Ok(new { category = categoryDto });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
         }
        
         
         //update
         [HttpPatch("{id}")]
         public IActionResult Update(UpdateDto request, int id) {
-            var category = _context.Categories.Find(id);
-            category.Name = request.Name;
-            _context.SaveChanges();
-            return Ok(new {message= "success"});
+            try
+            {
+                var category = _context.Categories.Find(id);
+                category.Name = request.Name;
+                _context.SaveChanges();
+                return Ok(new { message = "success" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
         }
 
         //delete
         [HttpDelete("{id}")]
         public IActionResult Delete(int id) {
-            var category = _context.Categories.Find(id);
-            _context.Categories.Remove(category);
-            _context.SaveChanges();
-            return Ok(new {message="success"});
+            try
+            {
+                var category = _context.Categories.Find(id);
+                _context.Categories.Remove(category);
+                _context.SaveChanges();
+                return Ok(new { message = "success" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
         }
 
     }
