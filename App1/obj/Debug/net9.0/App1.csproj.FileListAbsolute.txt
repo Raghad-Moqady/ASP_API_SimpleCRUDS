@@ -167,3 +167,5 @@ C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\obj\Debug\net9.0\App1.s
 C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\bin\Debug\net9.0\Mapster.dll
+C:\Users\LENOVO\Desktop\BackendNew2025_R12\API\App1\App1\bin\Debug\net9.0\Mapster.Core.dll

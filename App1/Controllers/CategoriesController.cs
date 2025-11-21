@@ -2,6 +2,7 @@
 using App1.DTOs.categories;
 using App1.Models;
 using Azure.Core;
+using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,9 +23,13 @@ namespace App1.Controllers
                 {
                     Name = request.Name
                 };
+
+                //mapester way (from dto to domain model)
+                //var category= request.Adapt<Category>();
+
                 _context.Categories.Add(category);
                 _context.SaveChanges();
-                return Ok(new { message = "Added Succeessfully!" });
+                return Ok(new { message = "Added Succeessfully!" ,category});
             }
             catch (Exception ex) { 
                 return BadRequest(ex.InnerException.Message);
@@ -56,6 +61,10 @@ namespace App1.Controllers
                     Id = c.Id,
                     Name = c.Name,
                 }).ToList();
+
+                //way 3 : using mapester
+                //var categories= _context.Categories.ToList();
+                //var categoriesDto = categories.Adapt<List<GetAllDTO>>();
                 return Ok(new { categories = categoriesDto });
             }
             catch (Exception ex)

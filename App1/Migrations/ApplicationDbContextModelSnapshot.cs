@@ -35,7 +35,7 @@ namespace App1.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("App1.Models.Product", b =>
@@ -64,7 +64,7 @@ namespace App1.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("App1.Models.Product", b =>
